@@ -1,0 +1,106 @@
+::root{
+    --background-color: #7629F3;
+}
+
+.btn-bg{
+    background-color: var(--background-color);
+}
+.card button{
+    font-size: 18px;
+    padding: 8px 12px;
+}
+.supplier-heading{
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+.badge{
+    background: #53AE45;
+    color: white;
+}
+
+table td span i{
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+.create-heading{
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.form-design label{
+    font-size: 18px;
+    font-weight: bold;
+    float: right;
+}
+
+.form-design input{
+    border: 1px solid rgb(209, 208, 208);
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+ .form-design ::placeholder{
+    color: rgb(188, 184, 184);
+    font-size: 18px;
+    font-weight: bold;
+ }
+
+
+ /* Hide the default radio button */
+.custom-radio {
+    display: none;
+}
+
+/* Style the custom label as a radio button */
+.custom-label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Create the circular "radio" button */
+.custom-label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #999; /* Default border color */
+    border-radius: 50%;
+    background-color: transparent;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Style the checked radio button with a checkmark */
+.custom-radio:checked + .custom-label::before {
+    background-color: #7629F3;
+    border-color: #7629F3;
+    color: white !important;
+    content: "✔";
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.unitqty,
+.unitPrice{
+    width: 70px;
+}
+
+.totalAmount{
+    font-size: 25px;
+    color: var(--background-color);
+}
+.supplier_name{
+    font-size: 25px;
+    color: #7629F3;
+}
+
