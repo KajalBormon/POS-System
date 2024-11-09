@@ -47,6 +47,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/purchase_create','create')->name('purchase.create');
         Route::post('/purchase_store','store')->name('purchase.store');
         Route::get('/purchase_delete/{id}','destroy')->name('purchase.delete');
+        Route::post('/purchase_search','search')->name('purchase.search');
     });
 
 

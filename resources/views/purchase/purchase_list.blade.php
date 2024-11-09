@@ -13,13 +13,16 @@
                 </div>
                 <div class="card-body">
                     <div class="col-12 row">
-                        <form action="" method="POST">
+                        <form action="{{ route('purchase.search') }}" method="POST">
+                            @csrf
                             <div class="col-12 row">
                                 <div class="col-3 mr-2">
                                     <label for="supplier_name" class="font-bold mb-2">Supplier <span class="text-danger">*</span> </label>
-                                    <select name="supplier_name" id="supplier_name" class="form-control">
+                                    <select name="supplier_id" id="supplier_name" class="form-control">
                                         <option value="" selected disabled>All Supplier</option>
-                                        <option value="1">Kajal Bormon</option>
+                                        @foreach ($suppliers as $supplier)
+                                        <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col-3 mr-2">
@@ -53,7 +56,6 @@
                             </thead>
                             <tbody>
                                 @foreach ($orders as $order)
-                                
                                 <tr>
                                     <td>{{ $order->supplier->name }}</td>
                                     <td>{{ $order->order_no }}</td>
@@ -85,6 +87,7 @@
                                             </span>
                                        </a>
                                     </td>
+
                                 </tr>
                                 @endforeach
                             </tbody>

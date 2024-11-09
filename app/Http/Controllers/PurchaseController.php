@@ -8,12 +8,14 @@ use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Unique;
+use Session;
 
 class PurchaseController extends Controller
 {
     public function index(){
         $orders = Purchase::all();
-        return view("purchase.purchase_list",compact('orders'));
+        $suppliers = Supplier::all();
+        return view("purchase.purchase_list",compact('orders','suppliers'));
     }
 
     public function create(){
@@ -71,6 +73,37 @@ class PurchaseController extends Controller
         }
     }
 
+
+    /* --------------Supplier List for Filtering------------- */
+    public function search(Request $request){
+        $suppliers = Supplier::all();
+        $request->validate([
+            'supplier_id' => 'required',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+        ]);
+
+        Session([
+            'supplier_id' => $request->supplier_id,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+        ]);
+
+        $supplier_id = session('supplier_id');
+        $start_date = session('start_date');
+        $end_date = session('end_date');
+
+        if($start_date && $end_date && $supplier_id){
+            $orders = Purchase::whereDate('created_at','>=', $start_date)
+                                ->whereDate('created_at','<=',$end_date)
+                                ->where('supplier_id',$supplier_id)
+                                ->get();
+            session()->forget(['supplier_id','start_date','end_date']);
+            return view('purchase.purchase_list',compact('orders','suppliers'));
+        }
+
+
+    }
 
 
 
